@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { jwtVerify } from 'jose'
 
-// Middleware runs at the edge before any page renders — defense-in-depth
-// The page-level requireAuth/requireAdmin calls remain as the authoritative check.
+// Proxy runs at the edge before any page renders — defense-in-depth.
+// Page-level requireAuth/requireAdmin remain the authoritative check.
 function getSecret() {
   const s = process.env.SESSION_SECRET
   if (!s) throw new Error('SESSION_SECRET environment variable is not set')
@@ -12,7 +12,7 @@ function getSecret() {
 const ADMIN_PATHS = ['/admin']
 const AUTH_PATHS = ['/dashboard', '/admin']
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   const needsAuth = AUTH_PATHS.some(p => pathname.startsWith(p))
