@@ -205,7 +205,7 @@ export default function HomePage() {
             </p>
           </FadeIn>
 
-          <FadeIn className="mb-4">
+          <FadeIn className="mb-4 hidden sm:block">
             <div className="grid grid-cols-5 gap-3 px-6">
               <div />
               {['1 Dog', '2 Dogs', '3 Dogs', '4+ Dogs'].map(d => (
