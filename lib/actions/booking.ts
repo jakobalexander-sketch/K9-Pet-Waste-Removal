@@ -12,10 +12,10 @@ const ALLOWED_STATUSES = ['confirmed', 'completed', 'cancelled'] as const
 type AllowedStatus = typeof ALLOWED_STATUSES[number]
 
 const PRICES: Record<string, Record<string, number>> = {
-  'one-time': { '1': 2500, '2': 3500, '3': 4500, '4+': 5500 },
-  weekly:     { '1': 1500, '2': 2200, '3': 2900, '4+': 3600 },
-  'bi-weekly':{ '1': 1800, '2': 2600, '3': 3400, '4+': 4200 },
-  monthly:    { '1': 2000, '2': 2900, '3': 3800, '4+': 4700 },
+  'one-time': { '1': 5000, '2': 6500, '3': 8000, '4+': 9500 },
+  weekly:     { '1': 2000, '2': 3000, '3': 4000, '4+': 5000 },
+  'bi-weekly':{ '1': 3000, '2': 4500, '3': 6000, '4+': 7500 },
+  monthly:    { '1': 4500, '2': 6000, '3': 7500, '4+': 9000 },
 }
 
 function getPrice(frequency: string, dogs: string): number {

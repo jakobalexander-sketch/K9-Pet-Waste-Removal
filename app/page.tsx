@@ -8,17 +8,10 @@ import ServiceCard from '@/components/ServiceCard'
 import PricingRow from '@/components/PricingRow'
 
 const services = [
-  { icon: '✦', title: 'One-Time Cleanup', desc: 'Get your yard spotless fast. Ideal for getting back under control or preparing for guests.', badge: 'Most Popular' },
-  { icon: '◈', title: 'Weekly Service', desc: 'Set it and forget it. We visit every week so your yard stays pristine year-round.', badge: null },
+  { icon: '✦', title: 'One-Time Cleanup', desc: 'Get your yard spotless fast. Ideal for getting back under control or preparing for guests.', badge: null },
+  { icon: '◈', title: 'Weekly Service', desc: 'Set it and forget it. We visit every week so your yard stays pristine year-round.', badge: 'Most Popular' },
   { icon: '◇', title: 'Bi-Weekly Service', desc: 'The perfect balance — every two weeks for yards with moderate foot traffic.', badge: 'Best Value' },
   { icon: '○', title: 'Monthly Service', desc: 'Once-a-month deep cleaning for lighter use yards or seasonal coverage.', badge: null },
-]
-
-const stats = [
-  { value: 2400, suffix: '+', label: 'Yards Serviced' },
-  { value: 98, suffix: '%', label: 'Satisfaction Rate' },
-  { value: 5, suffix: ' yrs', label: 'In Business' },
-  { value: 850, suffix: '+', label: 'Happy Clients' },
 ]
 
 const steps = [
@@ -28,10 +21,10 @@ const steps = [
 ]
 
 const pricing = [
-  { freq: 'One-Time', price: { 1: 25, 2: 35, 3: 45, 4: 55 }, highlight: false },
-  { freq: 'Monthly', price: { 1: 20, 2: 29, 3: 38, 4: 47 }, highlight: false },
-  { freq: 'Bi-Weekly', price: { 1: 18, 2: 26, 3: 34, 4: 42 }, highlight: false },
-  { freq: 'Weekly', price: { 1: 15, 2: 22, 3: 29, 4: 36 }, highlight: true },
+  { freq: 'One-Time', price: { 1: 50, 2: 65, 3: 80, 4: 95 }, highlight: false },
+  { freq: 'Monthly', price: { 1: 45, 2: 60, 3: 75, 4: 90 }, highlight: false },
+  { freq: 'Bi-Weekly', price: { 1: 30, 2: 45, 3: 60, 4: 75 }, highlight: false },
+  { freq: 'Weekly', price: { 1: 20, 2: 30, 3: 40, 4: 50 }, highlight: true },
 ]
 
 const testimonials = [
@@ -62,16 +55,22 @@ export default function HomePage() {
 
       {/* Stats bar */}
       <section style={{ background: 'var(--bg-surface)', borderBottom: '1px solid var(--border)' }} className="py-14 px-4">
-        <div className="max-w-5xl mx-auto">
-          <StaggerChildren className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
-            {stats.map((s) => (
-              <StaggerItem key={s.label}>
-                <div className="font-display text-5xl font-light italic" style={{ color: 'var(--gold)', fontFamily: 'var(--font-display)' }}>
-                  <CountUp to={s.value} suffix={s.suffix} />
-                </div>
-                <div className="text-xs mt-2 tracking-editorial uppercase" style={{ color: 'var(--text-muted)' }}>{s.label}</div>
-              </StaggerItem>
-            ))}
+        <div className="max-w-4xl mx-auto">
+          <StaggerChildren className="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
+            <StaggerItem>
+              <div className="font-display text-5xl font-light italic" style={{ color: 'var(--gold)', fontFamily: 'var(--font-display)' }}>
+                <CountUp to={100} suffix="%" />
+              </div>
+              <div className="text-xs mt-2 tracking-editorial uppercase" style={{ color: 'var(--text-muted)' }}>Satisfaction Rate</div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="font-display text-5xl font-light italic" style={{ color: 'var(--gold)', fontFamily: 'var(--font-display)' }}>$0</div>
+              <div className="text-xs mt-2 tracking-editorial uppercase" style={{ color: 'var(--text-muted)' }}>Hidden Fees</div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="font-display text-5xl font-light italic" style={{ color: 'var(--gold)', fontFamily: 'var(--font-display)' }}>★★★★★</div>
+              <div className="text-xs mt-2 tracking-editorial uppercase" style={{ color: 'var(--text-muted)' }}>5-Star Service</div>
+            </StaggerItem>
           </StaggerChildren>
         </div>
       </section>
@@ -223,7 +222,17 @@ export default function HomePage() {
             ))}
           </StaggerChildren>
 
-          <FadeIn delay={0.3} className="text-center mt-12">
+          <FadeIn delay={0.25} className="mt-6">
+            <div className="flex items-center gap-3 px-6 py-4 rounded-2xl" style={{ background: 'rgba(212,168,83,0.06)', border: '1px solid rgba(212,168,83,0.2)' }}>
+              <span style={{ color: 'var(--gold)' }}>✦</span>
+              <span className="text-sm" style={{ color: 'var(--text-muted)' }}>
+                <span className="font-semibold text-white">Deodorizer add-on</span> — eliminate odors with an enzyme treatment.
+                <span className="ml-2 font-semibold" style={{ color: 'var(--gold)' }}>+$5 per visit</span>
+              </span>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.35} className="text-center mt-10">
             <Link
               href="/book"
               className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-sm font-semibold tracking-wide transition-all duration-300 group"
@@ -233,7 +242,7 @@ export default function HomePage() {
               <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
             </Link>
             <p className="mt-4 text-xs tracking-wide" style={{ color: 'var(--text-subtle)' }}>
-              First-time customers receive 20% off their first visit
+              No contracts — cancel anytime
             </p>
           </FadeIn>
         </div>

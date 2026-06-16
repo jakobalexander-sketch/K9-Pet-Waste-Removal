@@ -17,7 +17,7 @@ export default function PricingRow({ freq, price, highlight }: {
         {highlight && (
           <span className="text-xs font-medium px-2 py-0.5 rounded-full"
             style={{ background: 'var(--gold)', color: '#06080e' }}>
-            Best
+            Most Popular
           </span>
         )}
       </div>

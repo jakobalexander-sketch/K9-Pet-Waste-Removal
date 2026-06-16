@@ -44,7 +44,7 @@ export default function Hero() {
         >
           <div className="divider-gold" />
           <span className="text-xs tracking-editorial uppercase font-medium" style={{ color: 'var(--gold)', fontFamily: 'var(--font-sans)' }}>
-            Premium Yard Care · Est. 2023
+            Premium Pet Waste Removal
           </span>
         </motion.div>
 
