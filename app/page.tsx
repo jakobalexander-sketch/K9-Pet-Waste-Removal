@@ -30,19 +30,19 @@ const pricing = [
 const testimonials = [
   {
     name: 'Sarah M.',
-    location: 'Springfield, IL',
+    location: 'Hemet, CA',
     text: 'K-9 has completely changed how I feel about my backyard. My kids can actually play out there again. Worth every penny.',
     stars: 5,
   },
   {
     name: 'James T.',
-    location: 'Naperville, IL',
+    location: 'San Jacinto, CA',
     text: "Super reliable, always on time, and they never miss a spot. I've tried two other services before — this is on another level.",
     stars: 5,
   },
   {
     name: 'Michelle R.',
-    location: 'Aurora, IL',
+    location: 'Murrieta, CA',
     text: 'I have three large dogs. This service is a genuine lifesaver. Easy to book, and they\'re completely professional.',
     stars: 5,
   },
