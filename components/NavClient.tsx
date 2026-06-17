@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { SessionUser } from '@/lib/session'
 
@@ -10,15 +11,28 @@ type Props = {
   logoutAction: () => Promise<void>
 }
 
+const SECTION_LINKS = [
+  { hash: '#services', label: 'Services' },
+  { hash: '#pricing',  label: 'Pricing'  },
+  { hash: '#contact',  label: 'Contact'  },
+]
+
 export default function NavClient({ session, logoutAction }: Props) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', fn, { passive: true })
     return () => window.removeEventListener('scroll', fn)
   }, [])
+
+  // On the homepage use bare anchors (#services) for smooth scroll;
+  // on any other page prefix with / so the browser navigates home first.
+  const sectionHref = (hash: string) => pathname === '/' ? hash : `/${hash}`
+
+  const close = () => setOpen(false)
 
   return (
     <motion.header
@@ -33,7 +47,7 @@ export default function NavClient({ session, logoutAction }: Props) {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between py-4">
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group" onClick={close}>
           <span className="text-xl">🐾</span>
           <span
             className="text-sm font-black tracking-[0.14em] uppercase transition-colors duration-300"
@@ -45,16 +59,16 @@ export default function NavClient({ session, logoutAction }: Props) {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {['#services', '#pricing', '#contact'].map((href) => (
+          {SECTION_LINKS.map(({ hash, label }) => (
             <a
-              key={href}
-              href={href}
+              key={hash}
+              href={sectionHref(hash)}
               className="text-sm font-medium transition-colors capitalize"
               style={{ color: 'var(--text-muted)' }}
               onMouseEnter={e => (e.currentTarget.style.color = 'white')}
               onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
             >
-              {href.replace('#', '')}
+              {label}
             </a>
           ))}
           {session ? (
@@ -98,7 +112,7 @@ export default function NavClient({ session, logoutAction }: Props) {
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
-          {[0,1,2].map(i => (
+          {[0, 1, 2].map(i => (
             <motion.span
               key={i}
               animate={open
@@ -122,24 +136,55 @@ export default function NavClient({ session, logoutAction }: Props) {
             className="md:hidden overflow-hidden"
           >
             <nav className="flex flex-col gap-1 px-6 py-4">
-              {[['#services', 'Services'], ['#pricing', 'Pricing'], ['#contact', 'Contact']].map(([href, label]) => (
-                <a key={href} href={href} onClick={() => setOpen(false)} className="py-3 text-white/70 hover:text-white transition-colors border-b" style={{ borderColor: 'var(--border)' }}>
+              {SECTION_LINKS.map(({ hash, label }) => (
+                <a
+                  key={hash}
+                  href={sectionHref(hash)}
+                  onClick={close}
+                  className="py-3 text-white/70 hover:text-white transition-colors border-b"
+                  style={{ borderColor: 'var(--border)' }}
+                >
                   {label}
                 </a>
               ))}
               {session ? (
                 <>
-                  <Link href={session.role === 'admin' ? '/admin' : '/dashboard'} className="py-3 text-white/70 hover:text-white transition-colors">
+                  <Link
+                    href={session.role === 'admin' ? '/admin' : '/dashboard'}
+                    onClick={close}
+                    className="py-3 text-white/70 hover:text-white transition-colors border-b"
+                    style={{ borderColor: 'var(--border)' }}
+                  >
                     {session.role === 'admin' ? 'Admin' : 'My Bookings'}
                   </Link>
                   <form action={logoutAction}>
-                    <button type="submit" className="py-3 text-red-400 hover:text-red-300 transition-colors text-left w-full">Log out</button>
+                    <button
+                      type="submit"
+                      onClick={close}
+                      className="py-3 text-red-400 hover:text-red-300 transition-colors text-left w-full"
+                    >
+                      Log out
+                    </button>
                   </form>
                 </>
               ) : (
                 <>
-                  <Link href="/login" className="py-3 text-white/70 hover:text-white transition-colors">Log in</Link>
-                  <Link href="/book" className="mt-2 py-3 text-center rounded-full font-semibold" style={{ background: 'var(--gold)', color: '#06080e' }}>Book Now</Link>
+                  <Link
+                    href="/login"
+                    onClick={close}
+                    className="py-3 text-white/70 hover:text-white transition-colors border-b"
+                    style={{ borderColor: 'var(--border)' }}
+                  >
+                    Log in
+                  </Link>
+                  <Link
+                    href="/book"
+                    onClick={close}
+                    className="mt-2 py-3 text-center rounded-full font-semibold"
+                    style={{ background: 'var(--gold)', color: '#06080e' }}
+                  >
+                    Book Now
+                  </Link>
                 </>
               )}
             </nav>
