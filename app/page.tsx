@@ -297,6 +297,52 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Contact */}
+      <section id="contact" className="py-24 px-4" style={{ background: 'var(--bg-surface)' }}>
+        <div className="max-w-4xl mx-auto">
+          <FadeIn className="flex flex-col items-center text-center mb-14">
+            <div className="divider-gold mb-6" />
+            <p className="text-xs tracking-editorial uppercase mb-5" style={{ color: 'var(--gold)' }}>Get In Touch</p>
+            <h2 className="font-display text-5xl sm:text-6xl font-light italic text-white leading-tight"
+              style={{ fontFamily: 'var(--font-display)' }}>
+              Questions? We&apos;re<br />
+              <span className="gradient-text">here to help.</span>
+            </h2>
+          </FadeIn>
+
+          <StaggerChildren className="grid sm:grid-cols-2 gap-6" staggerDelay={0.1}>
+            <StaggerItem>
+              <a href="tel:6196273686"
+                className="glass flex items-center gap-5 px-8 py-7 rounded-2xl group transition-all duration-300 hover:border-[rgba(212,168,83,0.4)]"
+                style={{ border: '1px solid var(--border)', background: 'rgba(13,16,24,0.8)', textDecoration: 'none' }}>
+                <div className="text-2xl flex-shrink-0" style={{ color: 'var(--gold)' }}>✆</div>
+                <div>
+                  <p className="text-xs tracking-editorial uppercase mb-1" style={{ color: 'var(--text-subtle)' }}>Call or Text</p>
+                  <p className="text-xl font-light text-white group-hover:text-[var(--gold)] transition-colors duration-300"
+                    style={{ fontFamily: 'var(--font-display)' }}>
+                    619-627-3686
+                  </p>
+                </div>
+              </a>
+            </StaggerItem>
+            <StaggerItem>
+              <a href="mailto:jared@k-9petwasteremoval.com"
+                className="glass flex items-center gap-5 px-8 py-7 rounded-2xl group transition-all duration-300 hover:border-[rgba(212,168,83,0.4)]"
+                style={{ border: '1px solid var(--border)', background: 'rgba(13,16,24,0.8)', textDecoration: 'none' }}>
+                <div className="text-2xl flex-shrink-0" style={{ color: 'var(--gold)' }}>✉</div>
+                <div>
+                  <p className="text-xs tracking-editorial uppercase mb-1" style={{ color: 'var(--text-subtle)' }}>Email Us</p>
+                  <p className="text-lg font-light text-white group-hover:text-[var(--gold)] transition-colors duration-300 break-all"
+                    style={{ fontFamily: 'var(--font-display)' }}>
+                    jared@k-9petwasteremoval.com
+                  </p>
+                </div>
+              </a>
+            </StaggerItem>
+          </StaggerChildren>
+        </div>
+      </section>
+
       {/* Final CTA with image */}
       <section className="relative py-36 px-4 overflow-hidden">
         <div className="absolute inset-0">

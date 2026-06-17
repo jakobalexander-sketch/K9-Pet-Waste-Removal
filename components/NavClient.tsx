@@ -45,7 +45,7 @@ export default function NavClient({ session, logoutAction }: Props) {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {['#services', '#pricing'].map((href) => (
+          {['#services', '#pricing', '#contact'].map((href) => (
             <a
               key={href}
               href={href}
@@ -122,7 +122,7 @@ export default function NavClient({ session, logoutAction }: Props) {
             className="md:hidden overflow-hidden"
           >
             <nav className="flex flex-col gap-1 px-6 py-4">
-              {[['#services', 'Services'], ['#pricing', 'Pricing']].map(([href, label]) => (
+              {[['#services', 'Services'], ['#pricing', 'Pricing'], ['#contact', 'Contact']].map(([href, label]) => (
                 <a key={href} href={href} onClick={() => setOpen(false)} className="py-3 text-white/70 hover:text-white transition-colors border-b" style={{ borderColor: 'var(--border)' }}>
                   {label}
                 </a>
