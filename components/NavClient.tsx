@@ -39,7 +39,7 @@ export default function NavClient({ session, logoutAction }: Props) {
             className="text-sm font-black tracking-[0.14em] uppercase transition-colors duration-300"
             style={{ fontFamily: 'var(--font-brand)', color: 'var(--gold)' }}
           >
-            K-9 Pet Waste
+            K-9 Pet Waste Removal
           </span>
         </Link>
 

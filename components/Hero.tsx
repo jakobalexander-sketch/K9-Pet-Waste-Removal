@@ -124,7 +124,7 @@ export default function Hero() {
           className="absolute right-8 bottom-10 flex flex-col items-center gap-3"
           style={{ color: 'rgba(240,238,232,0.35)' }}
         >
-          <span className="text-[10px] tracking-editorial uppercase rotate-90 origin-center" style={{ writingMode: 'vertical-rl' }}>
+          <span className="text-[10px] tracking-editorial uppercase" style={{ writingMode: 'vertical-rl' }}>
             Scroll
           </span>
           <motion.div
